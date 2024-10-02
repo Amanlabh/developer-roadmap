@@ -1,7 +1,7 @@
 ---
 import { AuthenticationForm } from '../components/AuthenticationFlow/AuthenticationForm';
 import AccountLayout from '../layouts/AccountLayout.astro';
-import {AccountTerms} from "../components/AccountTerms";
+import { AccountTerms } from "../components/AccountTerms";
 ---
 
 <AccountLayout
@@ -28,14 +28,45 @@ import {AccountTerms} from "../components/AccountTerms";
 
       <AuthenticationForm type='signup' client:load />
 
-      <div class='mt-3 w-full rounded-md border py-2 text-center text-sm text-slate-600'>
-        Already have an account? <a
-          href='/login'
-          class='font-medium text-blue-700 hover:text-blue-600'>Login</a
+      <!-- Continue with Google Button -->
+      <div class="mt-4 w-full">
+        <button 
+          class="flex items-center justify-center w-full rounded-md border border-gray-300 bg-white py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          onClick={() => handleGoogleSignIn()}
         >
+          Continue with Google
+        </button>
+      </div>
+
+      <!-- Continue with Apple ID Button -->
+      <div class="mt-4 w-full">
+        <button 
+          class="flex items-center justify-center w-full rounded-md border border-gray-300 bg-white py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          onClick={() => handleAppleSignIn()}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-5 w-5" viewBox="0 0 24 24" fill="black"><path d="M12 .5C5.657.5.5 5.657.5 12S5.657 23.5 12 23.5 23.5 18.343 23.5 12 18.343.5 12 .5zm0 22C6.477 22.5 1.5 17.523 1.5 12S6.477 1.5 12 1.5 22.5 6.477 22.5 12s-4.477 10.5-10.5 10.5z"/><path d="M15.75 9h-.75V8c0-.414-.336-.75-.75-.75H13c-.414 0-.75.336-.75.75v1h-.75c-.414 0-.75.336-.75.75v1c0 .414.336.75.75.75h1v4c0 .414.336.75.75.75h1c.414 0 .75-.336.75-.75v-4h1c.414 0 .75-.336.75-.75v-1c0-.414-.336-.75-.75-.75z"/></svg>
+          Continue with Apple ID
+        </button>
+      </div>
+
+      <div class='mt-3 w-full rounded-md border py-2 text-center text-sm text-slate-600'>
+        Already have an account? 
+        <a href='/login' class='font-medium text-blue-700 hover:text-blue-600'>Login</a>
       </div>
 
       <AccountTerms />
     </div>
   </div>
 </AccountLayout>
+
+<script>
+function handleGoogleSignIn() {
+    // Implement your Google Sign-In logic here
+    console.log("Google Sign-In initiated");
+}
+
+function handleAppleSignIn() {
+    // Implement your Apple Sign-In logic here
+    console.log("Apple Sign-In initiated");
+}
+</script>
